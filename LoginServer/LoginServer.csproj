@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5914D9DD-056E-4ECC-816E-8A5143864895}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoginServer</RootNamespace>
+    <AssemblyName>LoginServer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;STANDALONE,DEBUGCONFIGS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LoginServer.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Iesi.Collections.4.0.3\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="JHSNetProtocol, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\Debug\JHSNetProtocol.dll</HintPath>
+    </Reference>
+    <Reference Include="JHSRanking">
+      <HintPath>..\JHSRanking\bin\Debug\JHSRanking.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.7.9\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.1.2.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Engine\Classes\Objects\RankinngOBJ.cs" />
+    <Compile Include="Engine\Classes\Objects\AccountOBJ.cs" />
+    <Compile Include="Engine\Classes\Objects\ActivesOBJ.cs" />
+    <Compile Include="Engine\Classes\Objects\CharacterOBJ.cs" />
+    <Compile Include="Engine\Classes\Objects\DbEntity.cs" />
+    <Compile Include="Engine\Enums\SearchMatchOperations.cs" />
+    <Compile Include="Engine\Managers\ConfigManager.cs" />
+    <Compile Include="Engine\Managers\AccountManager.cs" />
+    <Compile Include="Engine\Managers\PlayerQueueManager.cs" />
+    <Compile Include="Engine\Managers\GameServerManager.cs" />
+    <Compile Include="Engine\Managers\RankingManager.cs" />
+    <Compile Include="Engine\Service\DbService.cs" />
+    <Compile Include="Engine\Settings.cs" />
+    <Compile Include="MYSQL\Tables\Actives.cs" />
+    <Compile Include="MYSQL\Tables\Characters.cs" />
+    <Compile Include="MYSQL\IndexAttribute.cs" />
+    <Compile Include="MYSQL\Tables\Rankings.cs" />
+    <Compile Include="Network\Client\CMD\BuyColorChange.cs" />
+    <Compile Include="Network\Client\CMD\BuySkinHandler.cs" />
+    <Compile Include="Network\Client\CMD\CollectActiveCommand.cs" />
+    <Compile Include="Network\Client\CMD\DeleteCharacterCommand.cs" />
+    <Compile Include="Network\Client\CMD\ExchangeCurrency.cs" />
+    <Compile Include="Network\Client\CMD\GetRankings.cs" />
+    <Compile Include="Network\Client\CMD\GMComands.cs" />
+    <Compile Include="Network\Client\CMD\RequestActives.cs" />
+    <Compile Include="Network\Client\CMD\SearchMatchCommand.cs" />
+    <Compile Include="Network\Client\CMD\UserLogin.cs" />
+    <Compile Include="Network\Client\Common\CommonConstant.cs" />
+    <Compile Include="Network\Client\Data\ConsoleCMD.cs" />
+    <Compile Include="Network\Client\Data\GWLoginPacket.cs" />
+    <Compile Include="Network\Client\Data\GWLoginResponsePacket.cs" />
+    <Compile Include="Network\Client\Data\GWMainMenu.cs" />
+    <Compile Include="Network\Client\Data\RankingPacket.cs" />
+    <Compile Include="Network\Client\Data\ServerCharacter.cs" />
+    <Compile Include="Network\Client\NetworkConstants.cs" />
+    <Compile Include="Network\Server\CMD\CMD_GETROLE.cs" />
+    <Compile Include="Network\Server\CMD\CMD_GS_GIVE_REWARDS.cs" />
+    <Compile Include="Network\Server\CMD\GS_STATE.cs" />
+    <Compile Include="Network\Server\Data\Empty.cs" />
+    <Compile Include="Network\Server\Data\ServerDatabasePlayer.cs" />
+    <Compile Include="Network\Server\GameServerOP.cs" />
+    <Compile Include="Utils\EloRatings.cs" />
+    <Compile Include="LOG.cs" />
+    <Compile Include="Network\NetworkServer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MYSQL\Tables\Users.cs" />
+    <Compile Include="Utils\JBehavor.cs" />
+    <Compile Include="Utils\JHSLoggingOverite.cs" />
+    <Compile Include="Utils\Properties.cs" />
+    <Compile Include="Utils\RewardHelper.cs" />
+    <Compile Include="Utils\StringUtils.cs" />
+    <Compile Include="Utils\UniqueQueue.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Configs\Config.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Configs\LoginData.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Configs\Net4Log.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Configs\hibernate.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
